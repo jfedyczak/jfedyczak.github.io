@@ -11,40 +11,44 @@ PostgreSQL doesn't provide direct MERGE or UPSERT commands. But similar results 
 
 I'll use following table to illustrate this solution:
 
-    CREATE TABLE person (
-        name TEXT PRIMARY KEY,
-        age INT NOT NULL
-    );
+{% highlight sql %}
+CREATE TABLE person (
+    name TEXT PRIMARY KEY,
+    age INT NOT NULL
+);
 
-    INSERT INTO person VALUES
-        ('John', 31),
-        ('Jane', 24);
+INSERT INTO person VALUES
+    ('John', 31),
+    ('Jane', 24);
+{% endhighlight %}
 
 ## INSERT not existing rows
 
 I'll now try to insert some new records (one new and one already existing name):
 
-    WITH
-        to_be_inserted (name, age) AS (
-            VALUES
-                ('John', 46),
-                ('Carol', 37)
-        ),
-        existing AS (
-            SELECT
-                name
-            FROM
-                to_be_inserted
-            WHERE
-                EXISTS (
-                    SELECT 1 FROM person
-                    WHERE name = to_be_inserted.name
-                )
-        )
-    INSERT INTO person
-        SELECT * FROM to_be_inserted
-        WHERE name NOT IN (SELECT name FROM existing)
-        RETURNING *;
+{% highlight sql %}
+WITH
+    to_be_inserted (name, age) AS (
+        VALUES
+            ('John', 46),
+            ('Carol', 37)
+    ),
+    existing AS (
+        SELECT
+            name
+        FROM
+            to_be_inserted
+        WHERE
+            EXISTS (
+                SELECT 1 FROM person
+                WHERE name = to_be_inserted.name
+            )
+    )
+INSERT INTO person
+    SELECT * FROM to_be_inserted
+    WHERE name NOT IN (SELECT name FROM existing)
+    RETURNING *;
+{% endhighlight %}
 
 This yields:
 
@@ -70,27 +74,29 @@ In this `WITH` query I defined `to_be_inserted` as static collection of rows to 
 
 Now I'll try to update two records and insert non-existing one:
 
-    WITH
-        to_be_upserted (name, age) AS (
-            VALUES
-                ('John', 46),
-                ('Carol', 23),
-                ('Edgar', 18)
-        ),
-        updated AS (
-            UPDATE
-                person
-            SET
-                age = to_be_upserted.age
-            FROM
-                to_be_upserted
-            WHERE
-                person.name = to_be_upserted.name
-            RETURNING person.name
-        )
-    INSERT INTO person
-        SELECT * FROM to_be_upserted
-        WHERE name NOT IN (SELECT name FROM updated);
+{% highlight sql %}
+WITH
+    to_be_upserted (name, age) AS (
+        VALUES
+            ('John', 46),
+            ('Carol', 23),
+            ('Edgar', 18)
+    ),
+    updated AS (
+        UPDATE
+            person
+        SET
+            age = to_be_upserted.age
+        FROM
+            to_be_upserted
+        WHERE
+            person.name = to_be_upserted.name
+        RETURNING person.name
+    )
+INSERT INTO person
+    SELECT * FROM to_be_upserted
+    WHERE name NOT IN (SELECT name FROM updated);
+{% endhighlight %}
 
 And after issuing `SELECT * FROM person;` again we'll get:
 

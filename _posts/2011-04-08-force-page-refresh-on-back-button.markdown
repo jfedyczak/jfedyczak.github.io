@@ -7,6 +7,8 @@ permalink: /post/force-page-refresh-on-back-button/
 ---
 I've tried to force a page to be downloaded again by browser when user clicks back button, but nothing worked. I appears that modern browsers have separate cache for pages, which stores complete state of a page (including JavaScript generated DOM elements), so when users presses back button, previous page is shown instantly in state the user has left it. If you want to force browser to reload page on back button, add `onunload=""` to your (X)HTML body element:
 
-    <body onunload="">
+{% highlight html %}
+<body onunload="">
+{% endhighlight %}
 
 This disables special cache and forces page reload when user presses back button. Think twice before you use it. Fact of needing such solution is a hint your site navigation concept is flawed.

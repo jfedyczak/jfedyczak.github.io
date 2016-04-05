@@ -19,50 +19,52 @@ as root.
 
 Here's sample Python script to read SMS data. It uses pySerial.
 
-    # encoding: utf-8
-    import serial
-    import time
-    import types
+{% highlight python %}
+# encoding: utf-8
+import serial
+import time
+import types
 
-    # converts UCS2 to UNICODE
-    def ucs(t):
+# converts UCS2 to UNICODE
+def ucs(t):
+    w = ""
+    for i in range(len(t)/4):
+        w += unichr(int(t[i*4:i*4+4],16))
+    return w
+
+# sends AT command to modem and receives result
+def at(k):
+    global ser
+
+    ser.write(k+"\r")
+    buf = ""
+    while buf[-6:] != "\r\nOK\r\n":
+        buf += ser.read(1)
+    buf = buf[len(k)+3:].split("\r\n")[:-2]
+    return buf
+
+# reads SMSes from modem and prints it on screen
+def getSMS():
+    sms = at("AT+CMGL=\"ALL\"")
+    while len(sms) >= 2:
+        meta = sms[0].split(",")
+        idx = meta[0][6:].strip()
+        sender = ucs(meta[2][1:-1])
         w = ""
-        for i in range(len(t)/4):
-            w += unichr(int(t[i*4:i*4+4],16))
-        return w
+        data = ucs(sms[1])
+        sms = sms[2:]
+        print "From: %s\nContent:\n%s\n---" % (sender,data)
+        komenda("AT+CMGD="+idx)
 
-    # sends AT command to modem and receives result
-    def at(k):
-        global ser
-    
-        ser.write(k+"\r")
-        buf = ""
-        while buf[-6:] != "\r\nOK\r\n":
-            buf += ser.read(1)
-        buf = buf[len(k)+3:].split("\r\n")[:-2]
-        return buf
-    
-    # reads SMSes from modem and prints it on screen
-    def getSMS():
-        sms = at("AT+CMGL=\"ALL\"")
-        while len(sms) >= 2:
-            meta = sms[0].split(",")
-            idx = meta[0][6:].strip()
-            sender = ucs(meta[2][1:-1])
-            w = ""
-            data = ucs(sms[1])
-            sms = sms[2:]
-            print "From: %s\nContent:\n%s\n---" % (sender,data)
-            komenda("AT+CMGD="+idx)
-
-    # change your port below
-    ser = serial.Serial("/dev/ttyU0.0",115200,timeout=5,rtscts=True)    
-    ser.open()
-    at("AT")
-    # at("AT+CPIN=****") # enter PIN if you have one
-    at("AT+CMGF=1") # puts modem in text mode
-    at("AT+CPMS=\"SM\"") # change SMS storage
-    at("AT+CSCS=\"UCS2\"") # change encoding
-    while True:
-        getSMS()
-        time.sleep(0.5)
+# change your port below
+ser = serial.Serial("/dev/ttyU0.0",115200,timeout=5,rtscts=True)    
+ser.open()
+at("AT")
+# at("AT+CPIN=****") # enter PIN if you have one
+at("AT+CMGF=1") # puts modem in text mode
+at("AT+CPMS=\"SM\"") # change SMS storage
+at("AT+CSCS=\"UCS2\"") # change encoding
+while True:
+    getSMS()
+    time.sleep(0.5)
+{% endhighlight %}

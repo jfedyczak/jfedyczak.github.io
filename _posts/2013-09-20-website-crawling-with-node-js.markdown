@@ -19,25 +19,31 @@ I'll ignore error checking for simplicity. Don't ever do that - especially with 
 
 We need some initialization:
 
-    request = require 'request'
-    cheerio = require 'cheerio'
-    async = require 'async'
+{% highlight coffee %}
+request = require 'request'
+cheerio = require 'cheerio'
+async = require 'async'
+{% endhighlight %}
 
 Initialize cookie jar in case we're handling cookie-aware site using HTTP redirects:
 
-    jar = request.jar()
+{% highlight coffee %}
+jar = request.jar()
+{% endhighlight %}
 
 Now start actual crawling:
 
-    request
-        followRedirect: true
-        uri: 'http://cnn.com/'
-        timeout: 10000
-        jar: jar
-    , (err, res, body) ->
-        $ = cheerio.load body
-        $('a').each ->
-            console.log "#{$(@).text()} -> #{$(@).attr 'href'}"
+{% highlight coffee %}
+request
+    followRedirect: true
+    uri: 'http://cnn.com/'
+    timeout: 10000
+    jar: jar
+, (err, res, body) ->
+    $ = cheerio.load body
+    $('a').each ->
+        console.log "#{$(@).text()} -> #{$(@).attr 'href'}"
+{% endhighlight %}
 
 We use cheerio to parse request body and find anchor text of each link on site. Results:
 

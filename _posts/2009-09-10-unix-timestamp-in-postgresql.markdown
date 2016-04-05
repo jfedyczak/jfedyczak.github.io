@@ -9,11 +9,15 @@ Since I'm looking for it every time, I've decided to put it here.
 
 To convert UNIX Timestamp to Postgres timestamp:
 
-    SELECT TIMESTAMP WITH TIME ZONE 'epoch' +
-        INTERVAL '1 second' * 1252606560 AS postgres_timestamp;
+{% highlight sql %}
+SELECT TIMESTAMP WITH TIME ZONE 'epoch' +
+    INTERVAL '1 second' * 1252606560 AS postgres_timestamp;
+{% endhighlight %}
 
 To convert Postgres timestamp to UNIX timestamp:
 
-    SELECT extract('epoch' FROM now())::int AS unix_timestamp;
+{% highlight sql %}
+SELECT extract('epoch' FROM now())::int AS unix_timestamp;
+{% endhighlight %}
 
 Skip the `::int` cast to get fractional part.

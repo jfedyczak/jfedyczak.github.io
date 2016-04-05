@@ -13,25 +13,27 @@ Using exceptions in [node.js](http://nodejs.org/) is pointless because of its ay
 
 Here's simple dot server code. Everything what may brake is in `try/catch` clause:
 
-    dotServer = ->
-        console.log "."
-        setTimeout dotServer, 1000
+{% highlight coffee %}
+dotServer = ->
+    console.log "."
+    setTimeout dotServer, 1000
 
-    dotServer()
+dotServer()
+{% endhighlight %}
 
-    try
-        console.log "zero seconds"
-        setTimeout ->
-            console.log "four seconds"
-            throw error
-        , 4000
-        console.log "zero seconds second time"
+try
+    console.log "zero seconds"
+    setTimeout ->
+        console.log "four seconds"
         throw error
-        console.log "never happens"
-    catch error
-        console.log "exception!"
+    , 4000
+    console.log "zero seconds second time"
+    throw error
+    console.log "never happens"
+catch error
+    console.log "exception!"
 
-    console.log "out of try/catch clause"
+console.log "out of try/catch clause"
 
 Results:
 
@@ -56,12 +58,14 @@ As you can see once we're out of `try/catch` clause, throwing exception causes p
 
 Exceptions are perfectly legitimate in synchronous parts of code. For example:
 
-    try
-        console.log "processing JSON string"
-        res = JSON.parse "{wtf"
-        console.log "got it!"
-    catch SyntaxError
-        console.log "wrong syntax!"
+{% highlight coffee %}
+try
+    console.log "processing JSON string"
+    res = JSON.parse "{wtf"
+    console.log "got it!"
+catch SyntaxError
+    console.log "wrong syntax!"
+{% endhighlight %}
 
 This results in:
 

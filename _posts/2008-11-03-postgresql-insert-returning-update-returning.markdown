@@ -7,11 +7,13 @@ permalink: /post/postgresql-insert-returning-update-returning/
 ---
 I've just discovered best thing since transactions in PosrgreSQL. Let's try to create and populate a table:
 
-    CREATE TABLE test (test_id SERIAL PRIMARY KEY, a INT NOT NULL);
-    INSERT INTO test (a) VALUES
-        (1), (2), (3), (4), (5),
-        (6), (7), (8), (9), (10);
-    SELECT * FROM test;
+{% highlight sql %}
+CREATE TABLE test (test_id SERIAL PRIMARY KEY, a INT NOT NULL);
+INSERT INTO test (a) VALUES
+    (1), (2), (3), (4), (5),
+    (6), (7), (8), (9), (10);
+SELECT * FROM test;
+{% endhighlight %}
 This gives us:
 
      test_id | a  
@@ -28,7 +30,10 @@ This gives us:
           10 | 10
 Now let's say we want to know the value of `test_id` column after another `INSERT` - this is where interesting stuff begins:
 
-    INSERT INTO test (a) VALUES (50) RETURNING *;
+{% highlight sql %}
+INSERT INTO test (a) VALUES (50) RETURNING *;
+{% endhighlight %}
+
      test_id | a  
     ---------+----
           11 | 50
@@ -37,7 +42,10 @@ Notice that `RETURNING` clause acts like SELECT over newly inserted fields. To o
 
 Another trick with `RETURNING` is possible with `UPDATE`:
 
-    UPDATE test SET a = a + 100 WHERE a < 6 RETURNING *;
+{% highlight sql %}
+UPDATE test SET a = a + 100 WHERE a < 6 RETURNING *;
+{% endhighlight %}
+
      test_id |  a  
     ---------+-----
            1 | 101
@@ -49,4 +57,3 @@ Another trick with `RETURNING` is possible with `UPDATE`:
 This results in a set of rows altered by `UPDATE`. Now you know how many records have you changed and in what way. Try to accomplish this without `RETURNING`...
 
 You can also narrow result by listing column explicitly rather than using `*`. 
-

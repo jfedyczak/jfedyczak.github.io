@@ -13,20 +13,22 @@ This is short story of my understanding of [express.js](http://expressjs.com) we
 
 Express.js is actually very thin (yet powerful) layer over [node's http stuff](http://nodejs.org/api/http.html). Let's start with minimal example:
 
-    express = require 'express'
+{% highlight coffee %}
+express = require 'express'
 
-    app = express()
+app = express()
 
-    app.configure ->
-        app.use express.bodyParser()
-        app.use express.cookieParser()
-        app.use app.router
-        app.use express.static "#{__dirname}/public"
+app.configure ->
+    app.use express.bodyParser()
+    app.use express.cookieParser()
+    app.use app.router
+    app.use express.static "#{__dirname}/public"
 
-    app.get '/', (req, res) ->
-        res.send '<body>Hello</body>'
+app.get '/', (req, res) ->
+    res.send '<body>Hello</body>'
 
-    app.listen 3000
+app.listen 3000
+{% endhighlight %}
 
 Here's what happens when `GET` request comes:
 
@@ -52,13 +54,17 @@ Here's `app.routes` content for above example (via `console.log app.routes`):
 
 Every middleware takes three arguments:
 
-    customMiddleware = (req, res, next) ->
-        console.log "Hello from middleware! User IP: #{req.ip}"
-        next()
+{% highlight coffee %}
+customMiddleware = (req, res, next) ->
+    console.log "Hello from middleware! User IP: #{req.ip}"
+    next()
+{% endhighlight %}
 
 `req` and `res` are request and response objects and `next` is a callback which is set by `app.use` to next middleware in request processing chain. Try putting following line after `cookieParser`:
 
-    app.use customMiddleware
+{% highlight coffee %}
+app.use customMiddleware
+{% endhighlight %}
 
 Running application and requesting `http://127.0.0.1:3000` will yield following line on the console for every request:
 

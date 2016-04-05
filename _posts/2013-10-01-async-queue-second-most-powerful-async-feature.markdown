@@ -13,70 +13,80 @@ Recently I wrote about [crawling a site](/post/website-crawling-with-node-js) us
 
 `async.queue` allow creating of task queue with preset concurrency:
 
-    crawlingQueue = async.queue crawlUrl, 3
+{% highlight coffeescript %}
+crawlingQueue = async.queue crawlUrl, 3
+{% endhighlight %}
 
 This creates `crawlingQueue` with worker function `crawlUrl` and concurrency of 3, which means that no more than 3 workers process tasks in the same time.
 
 To add new tasks to the queue, use the `.push` method:
 
-    crawlingQueue.push siteToCrawl
+{% highlight coffeescript %}
+crawlingQueue.push siteToCrawl
+{% endhighlight %}
 
 You can also pass optional second argument - a callback - called when processing of particular task finishes.
 
 First argument could also be an array allowing you to add multiple tasks in one call:
 
-    crawlingQueue.push urls
+{% highlight coffeescript %}
+crawlingQueue.push urls
+{% endhighlight %}
 
 To execute some code after all tasks have been processed, use `.drain` callback:
 
-    crawlingQueue.drain = ->
-        console.log " -- internal URLS: #{visitedUrls.length}"
-        console.log " -- external URLS: #{externalUrls.length}"
-        console.log "    --> #{url}" for url in externalUrls
+{% highlight coffeescript %}
+crawlingQueue.drain = ->
+    console.log " -- internal URLS: #{visitedUrls.length}"
+    console.log " -- external URLS: #{externalUrls.length}"
+    console.log "    --> #{url}" for url in externalUrls
+{% endhighlight %}
 
 Below there's a complete example. It allows crawling all internal pages of a site and finding all external URLs leading outside crawled domain. It uses 3 crawling workers. Do not use it for serious tasks.
 
-    async = require 'async'
-    request = require 'request'
-    cheerio = require 'cheerio'
-    URL = require 'url'
+{% highlight coffeescript %}
+async = require 'async'
+request = require 'request'
+cheerio = require 'cheerio'
+URL = require 'url'
 
-    siteToCrawl = 'http://jakub.fedyczak.net/'
-    restrictDomain = URL.parse(siteToCrawl).hostname
+siteToCrawl = 'http://jakub.fedyczak.net/'
+restrictDomain = URL.parse(siteToCrawl).hostname
 
-    visitedUrls = []
-    externalUrls = []
+visitedUrls = []
+externalUrls = []
 
-    crawlUrl = (url, callback) ->
-        return callback null if url in visitedUrls
-        visitedUrls.push url
-        request
-            uri: url
-            method: 'GET'
-            timeout: 5000
-        , (err, res, body) ->
-            return callback err if err
-            $ = cheerio.load body
-            urls = []
-            $('a').each () ->
-                href = $(@).attr 'href'
-                return true unless href
-                href = URL.resolve url, href
-                hostname = URL.parse(href).hostname
-                if hostname is restrictDomain
-                    urls.push href unless (href in urls) or (href in visitedUrls)
-                else
-                    externalUrls.push href unless href in externalUrls
-            console.log " -- #{url} (#{urls.length})"
-            crawlingQueue.push urls
-            callback null
+crawlUrl = (url, callback) ->
+    return callback null if url in visitedUrls
+    visitedUrls.push url
+    request
+        uri: url
+        method: 'GET'
+        timeout: 5000
+    , (err, res, body) ->
+        return callback err if err
+        $ = cheerio.load body
+        urls = []
+        $('a').each () ->
+            href = $(@).attr 'href'
+            return true unless href
+            href = URL.resolve url, href
+            hostname = URL.parse(href).hostname
+            if hostname is restrictDomain
+                urls.push href unless (href in urls) or (href in visitedUrls)
+            else
+                externalUrls.push href unless href in externalUrls
+        console.log " -- #{url} (#{urls.length})"
+        crawlingQueue.push urls
+        callback null
 
-    crawlingQueue = async.queue crawlUrl, 3
-    crawlingQueue.drain = ->
-        console.log " -- internal URLS: #{visitedUrls.length}"
-        console.log " -- external URLS: #{externalUrls.length}"
-        console.log "    --> #{url}" for url in externalUrls
-    crawlingQueue.push siteToCrawl
+crawlingQueue = async.queue crawlUrl, 3
+crawlingQueue.drain = ->
+    console.log " -- internal URLS: #{visitedUrls.length}"
+    console.log " -- external URLS: #{externalUrls.length}"
+    console.log "    --> #{url}" for url in externalUrls
+crawlingQueue.push siteToCrawl
+{% endhighlight %}
 
 And here's example result:
 

@@ -15,7 +15,7 @@ When client disconnects from pgBouncer, real database connection has to be reset
 
 There are two problems with `DISCARD ALL`:
 
-1. It doesn't work withing a transaction.
+1. It doesn't work within a transaction.
 2. It doesn't unlock any of pgsql's advisory locks.
 
 Imagine that a script issues `BEGIN` and than dies. The connection to pgBouncer closes and pgBouncer issues `DISCARD ALL`, which doesn't do anything because of active transaction. A new client connects and uses the same connection. Every command it issues fails because of *"commands ignored to the end of transaction"*. Not good.
