@@ -9,7 +9,7 @@
 title: jakub.fedyczak.net
 # email: jakub@fedyczak.net
 description: > # this means to ignore newlines until "baseurl:"
-  Hi and welcome to my site. Things published here are my solutions to problems I encounter. Feel free to contact me in case of bugs or questions.
+  Hi and welcome to the site. Things published here are my solutions to problems I encounter. Feel free to contact me in case of bugs or questions.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://jakub.fedyczak.net" # the base hostname & protocol for your site
 twitter_username: jfedpl
