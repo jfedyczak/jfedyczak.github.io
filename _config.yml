@@ -1,0 +1,23 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: jakub.fedyczak.net
+# email: jakub@fedyczak.net
+description: > # this means to ignore newlines until "baseurl:"
+  Hi and welcome to my site. Things published here are my solutions to problems I encounter. Feel free to contact me in case of bugs or questions.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://jakub.fedyczak.net" # the base hostname & protocol for your site
+twitter_username: jfedpl
+github_username:  jfedyczak
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+gems:
+  - jekyll-redirect-from
