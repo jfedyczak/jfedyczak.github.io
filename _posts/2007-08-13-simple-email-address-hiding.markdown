@@ -4,6 +4,7 @@ title: "Simple email address hiding"
 date: 2007-08-13
 tags: email hiding
 permalink: /post/simple-email-address-hiding/
+uid: CD93B21C-1A4E-4D4C-B52E-0452CFF6F1B1
 ---
 My way to hide email using JavaScript:
 

@@ -4,6 +4,7 @@ title: "PostgreSQL table partitioning"
 date: 2014-03-20
 tags: postgresql, partitioning
 permalink: /post/postgresql-table-partitioning/
+uid: CC39366A-6FB3-422E-931D-BD6C403730B0
 ---
 When you need to store large amount of indexed data in one table, you hit the problem of slow inserts caused by large [B-tree](http://en.wikipedia.org/wiki/B-tree) needing to be balanced every time you add data. PostgreSQL provides mechanism allowing to split data across multiple sub-tables. This reduces index size considerably and makes speed of inserting new data more consistent.
 

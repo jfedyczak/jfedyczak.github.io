@@ -4,6 +4,7 @@ title: "Why using exceptions in node.js is a bad idea"
 date: 2013-09-29
 tags: node.js, exceptions
 permalink: /post/why-using-exceptions-in-node-js-is-a-bad-idea/
+uid: 27A09F72-BE3C-47A3-A46C-3DC27C5B1D10
 ---
 ## Introduction
 

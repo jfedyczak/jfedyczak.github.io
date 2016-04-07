@@ -4,6 +4,7 @@ title: "pgBouncer and server_reset_query"
 date: 2008-11-01
 tags: pgBouncer, server_reset_query, DISCARD ALL
 permalink: /post/pgbouncer-and-server-reset-query/
+uid: ECD9B84D-DDBE-4AD0-973F-FCB16039FB4B
 ---
 **Update**: As of PostgreSQL 8.3.6 `DISCARD ALL` do release all advisory locks. This makes part of this article obsolete.
 

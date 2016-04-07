@@ -4,6 +4,7 @@ title: "Snow Leopard clean install + restore from Time Machine"
 date: 2009-09-04
 tags: snow leopard, os x, time machine, install
 permalink: /post/snow-leopard-clean-install-restore-from-time-machine/
+uid: 6A979563-4FDE-481A-97D2-035A6C4E3226
 ---
 I've just installed Snow Leopard (OS X 10.6) on my Unibody 13.3" MB. Everything works perfectly fine. What I did step by step:
 

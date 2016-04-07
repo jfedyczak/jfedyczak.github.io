@@ -4,6 +4,7 @@ title: "Sparrow Mail migration to another Mac"
 date: 2012-03-31
 tags: sparrow, migration
 permalink: /post/sparrow-mail-migration-to-another-mac/
+uid: 3011D995-2BFE-4F0E-AD86-6C742088390B
 ---
 To migrate [Sparrow Mail](http://sparrowapp.com/) mail and settings to another Mac, do the following:
 

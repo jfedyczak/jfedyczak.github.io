@@ -4,6 +4,7 @@ title: "MERGE/UPSERT example in PostgreSQL using CTE"
 date: 2013-08-29
 tags: merge, upsert, postgresql, cte
 permalink: /post/merge-upsert-example-in-postgresql-using-cte/
+uid: 7436AFEF-9BA1-4E55-B2D3-49F90917164A
 ---
 ## Introduction
 

@@ -4,6 +4,7 @@ title: "PostgreSQL's INSERT ... RETURNING and UPDATE ... RETURNING"
 date: 2008-11-03
 tags: postgres, postgresql, insert returning, update returning
 permalink: /post/postgresql-insert-returning-update-returning/
+uid: 84851068-2B1D-4FAB-8A3A-8D251130BD4F
 ---
 I've just discovered best thing since transactions in PosrgreSQL. Let's try to create and populate a table:
 

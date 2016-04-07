@@ -4,6 +4,7 @@ title: "ISC DHCPD two subnets on one interface"
 date: 2013-09-20
 tags: isc, dhcpd, two subnets
 permalink: /post/isc-dhcpd-two-subnets-on-one-interface/
+uid: 6D9E5254-3D8F-4B17-AE3B-C9BD72343C87
 ---
 I you need to serve two or more subnets on one physical interface using `isc-dhcpd` just wrap subnet declarations in `shared-network` clause:
 

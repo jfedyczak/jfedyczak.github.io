@@ -4,6 +4,7 @@ title: "Huawei E220 as SMS gateway on FreeBSD"
 date: 2010-08-19
 tags: huawei e220, sms gateway, freebsd
 permalink: /post/huawei-e220-as-sms-gateway-on-freebsd/
+uid: A2E3FF90-7AC8-4DE4-9D6C-DB8E4083972F
 ---
 I have recently configured my home FreeBSD server as SMS gateway using Huawei E220 USB modem.
 

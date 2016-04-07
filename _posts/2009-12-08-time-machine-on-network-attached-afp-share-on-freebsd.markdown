@@ -4,6 +4,7 @@ title: "Time Machine on network attached AFP share on FreeBSD"
 date: 2009-12-08
 tags: Time Machine, netatalk, FreeBSD, OS X
 permalink: /post/time-machine-on-network-attached-afp-share-on-freebsd/
+uid: 0E048941-0ABB-4409-B82F-DCB13AFFFBD6
 ---
 #Intoduction#
 **OS X Lion (10.7) Note:** Lion requires some features not available in `netatalk` since version 2.2.

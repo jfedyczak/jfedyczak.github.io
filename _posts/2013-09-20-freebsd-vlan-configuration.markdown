@@ -4,6 +4,7 @@ title: "FreeBSD VLAN configuration"
 date: 2013-09-20
 tags: freebsd, vlan
 permalink: /post/freebsd-vlan-configuration/
+uid: D2C9E72B-7F8F-48B1-AD89-9D457B07FD7E
 ---
 ## Introduction
 

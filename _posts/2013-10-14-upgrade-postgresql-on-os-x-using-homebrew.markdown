@@ -4,6 +4,7 @@ title: "Upgrade PostgreSQL on OS X using homebrew"
 date: 2013-10-14
 tags: postgresql, upgrade, homebrew
 permalink: /post/upgrade-postgresql-on-os-x-using-homebrew/
+uid: 0E633FC8-A6BE-4158-B703-DB582DC07831
 ---
 These are short instructions about upgrading [PostgreSQL](http://postgresql.org) using [Homebrew](http://brew.sh) - great OS X package manager.
 

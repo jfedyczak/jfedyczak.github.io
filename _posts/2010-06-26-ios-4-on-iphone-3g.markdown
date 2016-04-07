@@ -4,6 +4,7 @@ title: "iOS 4 on iPhone 3G"
 date: 2010-06-26
 tags: ios 4, iphone 3g
 permalink: /post/ios-4-on-iphone-3g/
+uid: 20EDCA03-BF1B-4B89-A58B-A9158918C3D2
 ---
 I've installed iOS 4 update the minute it became available. It worked like shit since then. Today I started reading about downgrade procedure, but I've decided to give it another chance.
 

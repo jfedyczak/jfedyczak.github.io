@@ -4,6 +4,7 @@ title: "Using bluetooth for measuring city traffic conditions"
 date: 2009-05-06
 tags: bluetooth, traffic, tracking
 permalink: /post/using-bluetooth-for-measuring-city-traffic-conditions/
+uid: 8E1FA01F-1161-4697-A444-2180FF1BA607
 ---
 I came up with this idea while I was pairing my mobile phone with my Mac. The idea is very simple. I've tested this "in the field" and it seems to work pretty well. Instead of tracking cars, you can track mobile phones of drivers and passengers. Many people leave their bluetooth devices in discoverable mode. This allows us to track them by periodically sending inquiry messages. This way it is possible to obtain MAC addresses of tracked devices. MAC addresses of BT devices are theoretically unique. By placing "sensors" near road, you can collect MAC addresses along with time of people (cars) passing by. When collected MAC address appear somewhere else - you can easily calculate time needed to travel from first location to another one. By placing several "sensors" in critical locations in a city, you can easily obtain information about current (and past) status of traffic conditions. Probability is your friend here. You don't have to collect every single MAC address. Simple average or median filters out any anomalies. Below simple proof of concept BT scanners for OS X:
 

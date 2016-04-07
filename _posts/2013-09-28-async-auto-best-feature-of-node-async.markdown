@@ -4,6 +4,7 @@ title: "Async.auto - best feature of node async"
 date: 2013-09-28
 tags: async, node.js, auto, callback hell
 permalink: /post/async-auto-best-feature-of-node-async/
+uid: E087ED95-145D-4E7F-A3D1-A526799D4C2A
 ---
 ## Introduction
 

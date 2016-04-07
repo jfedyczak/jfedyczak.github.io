@@ -4,6 +4,7 @@ title: "Huawei E173 on Ubuntu"
 date: 2011-04-16
 tags: huawei e173, ubuntu
 permalink: /post/huawei-e173-on-ubuntu/
+uid: 0199D0CA-7A51-478E-84FC-6E6BE7FC516E
 ---
 I've been trying to get my Huawei E173 modem working on Ubuntu. I'm no Ubuntu expert and it took me half a day to get it working, so here's what I eventually did:
 

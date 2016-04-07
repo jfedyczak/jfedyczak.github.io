@@ -4,6 +4,7 @@ title: "Running express.js app behind nginx"
 date: 2013-08-25
 tags: express.js, nginx
 permalink: /post/running-express-js-app-behind-nginx/
+uid: 9C493AF7-BBA3-421D-B015-00F543062517
 ---
 Most tutorials online suggests using reverse proxy with TCP socket. I use UNIX socket. I consider it faster - it circumvents all TCP bloat:
 

@@ -4,6 +4,7 @@ title: "PostgreSQL WITH RECURSIVE tree traversing example"
 date: 2012-10-30
 tags: WITH RECURSIVE, PosrgreSQL
 permalink: /post/postgresql-with-recursive-tree-traversing-example/
+uid: F409AD0F-DB63-44FE-B3F0-A5C6F3767AB6
 ---
 Here's complete example of traversing a tree in depth-first manner (ensured by `ORDER BY` clause).
 

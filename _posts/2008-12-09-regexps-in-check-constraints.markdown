@@ -4,6 +4,7 @@ title: "Regexps in CHECK constraints"
 date: 2008-12-09
 tags: regexp, check, postgresql
 permalink: /post/regexps-in-check-constraints/
+uid: C96C8B52-442B-42B1-ABCB-01CFBC68A668
 ---
 Regexps (regular expressions) are very powerful and robust tool to use in PostgreSQL. You're probably familiar with the syntax:
 

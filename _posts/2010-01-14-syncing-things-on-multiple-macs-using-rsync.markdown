@@ -4,6 +4,7 @@ title: "Syncing Things on multiple Macs using rsync"
 date: 2010-01-14
 tags: Things, rsync, sync
 permalink: /post/syncing-things-on-multiple-macs-using-rsync/
+uid: 0E6694F1-6AF1-49E9-A2DC-AD791B2B2489
 ---
 I use remote SSH account to keep my [Things][1] database in sync on Macs I use. Here's the shell script:
 

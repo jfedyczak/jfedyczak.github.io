@@ -4,6 +4,7 @@ title: "Async.queue - second most powerful async feature"
 date: 2013-10-01
 tags: node.js, async queue, crawling
 permalink: /post/async-queue-second-most-powerful-async-feature/
+uid: AA96D8D4-97F9-4943-A7A7-B41E90B4A7CD
 ---
 ## Introduction
 

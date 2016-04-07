@@ -4,6 +4,7 @@ title: "Express.js internals crash course"
 date: 2013-08-26
 tags: express.js
 permalink: /post/express-js-internals-crash-course/
+uid: 848D499C-44C0-47D1-A689-ABE8C69AC57A
 ---
 ## Introduction
 

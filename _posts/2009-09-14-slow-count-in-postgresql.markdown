@@ -4,6 +4,7 @@ title: "Slow COUNT(*) in PostgreSQL"
 date: 2009-09-14
 tags: slow count, postgresql
 permalink: /post/slow-count-in-postgresql/
+uid: 53B95320-46F2-4656-9C9B-17DE2956E707
 ---
 `COUNT(*)` in PostgreSQL tends to be slow. I takes about 20 secodns to count 1.7 million records table. I's not a bug. It's a feature of [MVCC](http://en.wikipedia.org/wiki/Multiversion_concurrency_control). One of the workarounds of the problem is a row counting trigger with a helper table:
 

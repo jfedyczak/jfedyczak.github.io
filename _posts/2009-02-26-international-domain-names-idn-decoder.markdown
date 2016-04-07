@@ -4,6 +4,7 @@ title: "International Domain Names (IDN) decoder"
 date: 2009-02-26
 tags: IDN, decoder, International Domain Names, punycode, PHP IDN decoder
 permalink: /post/international-domain-names-idn-decoder/
+uid: 1C7AE182-5A96-4FEB-9C83-40C0CA2F260B
 ---
 IDN stands for internationalized domain name. It's a domain containing non-ASCII international character(s). As it is not directly supported by DNS servers translating names to IP addresses, punycode has been used to encode international (Unicode) characters to ASCII characters making it backwards compatible with existing software. This is strictly specified in RFC 3492. For example domain name containing polish characters:
 

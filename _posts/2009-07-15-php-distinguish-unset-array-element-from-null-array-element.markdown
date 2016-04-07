@@ -4,6 +4,7 @@ title: "PHP: Distinguish unset array element from null array element"
 date: 2009-07-15
 tags: php, isset, is_null
 permalink: /post/php-distinguish-unset-array-element-from-null-array-element/
+uid: F6C37398-203F-409A-B898-76C9D125C1A8
 ---
 Let's execute following code:
 

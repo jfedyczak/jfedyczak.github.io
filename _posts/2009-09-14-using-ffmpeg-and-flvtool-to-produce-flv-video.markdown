@@ -4,6 +4,7 @@ title: "Using ffmpeg and flvtool++ to produce FLV video"
 date: 2009-09-14
 tags: FLV, ffmpeg, flvtool++
 permalink: /post/using-ffmpeg-and-flvtool-to-produce-flv-video/
+uid: 7B10CFF1-C74A-4CE2-B617-7DA8D0B62A7C
 ---
 Here's how to convert MPEG, AVI, MOV and possibly other video formats to FLV using `ffmpeg` and add proper meta information using `flvtool++`.
 
