@@ -25,6 +25,25 @@
       ga('send', 'pageview');
 
     </script>
+    <script>
+      WebFontConfig = {
+        google: {
+          families: [
+              'Roboto+Mono:400,300,500,700',
+              'Ubuntu:400,300,300italic,500,700',
+              'Montserrat'
+          ]
+        }
+      };
+      (function() {
+          var wf = document.createElement('script');
+          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+        })();    </script>
   </body>
 
 </html>
