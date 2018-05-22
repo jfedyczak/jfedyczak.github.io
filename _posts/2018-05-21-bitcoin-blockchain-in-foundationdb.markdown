@@ -22,7 +22,7 @@ With RocksDB and some additional address cache in PostgreSQL database, I've crea
 
 ## Enter FoundationDB
 
-Some time ago I stumbled on news about releasing [FoundationDB](https://www.foundationdb.org) as Open Source by Apple. I had never heard about it before but apparent project maturity and use cases in the wild made it very compelling. My enthusiasm has been tempered by the lack of native node.js bindings but situation improved soon thanks to [foundatiobdb](https://www.npmjs.com/package/foundationdb) npm package.
+Some time ago I stumbled upon news about releasing [FoundationDB](https://www.foundationdb.org) as Open Source by Apple. I had never heard about it before but apparent project maturity and use cases in the wild made it very compelling. My enthusiasm has been tempered by the lack of native node.js bindings but situation improved soon thanks to [foundatiobdb](https://www.npmjs.com/package/foundationdb) npm package.
 
 ## Client in docker container
 
@@ -65,7 +65,7 @@ VOLUME /home/app/src/data
 
 ## FoundationDB server configuration
 
-I'm using two SSD VPS machines running Ubuntu 16.04 with 3 fdb procesess each forming one cluster.
+I'm using two SSD VPS machines running Ubuntu 16.04 with 3 fdb procesess on each VPS, forming one cluster.
 
 Filesystems are mounted with `defaults, noatime, discard` options to optimize SSD utilization.
 
