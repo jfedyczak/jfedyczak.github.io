@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Bitcoin blockchain in FoundationDB"
-date: 2016-04-08
+date: 2018-05-22
 tags: foundationdb, blockchain, bitcoin
 permalink: /post/bitcoin-blockchain-in-foundationdb/
 uid: 92f1588f-9232-427f-bc58-6ffca1cd1b69
