@@ -147,3 +147,30 @@ fdb> _
 
 I will update this text after loading full blockchain data into the cluster.
 
+## Several days later...
+
+Inserting process on cheap VPS machines came almost to full-stop after reaching 100GB. Performance of network-attached SSD is just to low.
+
+I switched to bare-metal servers. I started with 3x120GB SSD machine from [SoYouStart](https://www.soyoustart.com/). This was going very smoothly until disk space went almost to 0. I bought another machine - this time in Canada datacenter. This was a mistake. Although hot-inserting another machine went without problems, even after data rebalancing, insert times increased tenfold. I blame network latency between France and Canada (around 80ms), so I bought another machine - again in France, added it to the cluster, excluded second machine and currently waiting for data migration from Canada back to France:
+
+```
+Cluster:
+  FoundationDB processes - 9 (less 3 excluded; 0 with errors)
+  Machines               - 3 (less 1 excluded)
+  Memory availability    - 5.3 GB per process on machine with least available
+  Retransmissions rate   - 16 Hz
+  Fault Tolerance        - 0 machines
+  Server time            - 05/29/18 14:43:42
+
+Data:
+  Replication health     - Healthy (Removing storage server)
+  Moving data            - 107.961 GB
+  Sum of key-value sizes - 247.685 GB
+  Disk space used        - 462.098 GB
+```
+
+All these operations were performed without stopping the data load. I'm currenlty at block 465525 of Bitcoin blockchian.
+
+Some remarks:
+ - instead of creating RAID0 arrays, I'm using separate disk for separate process with `datadir` directive in `foundationdb.conf`, hence 3 processes per machine
+ - after adding second machine to the cluster, database started to replay transactions alot, not sure why - had to add new logic to decrease batches of data to avoid infinite replay loops
